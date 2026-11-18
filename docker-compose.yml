@@ -1,0 +1,30 @@
+services:
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:v23.3.4
+    container_name: iceberg-redpanda
+    ports:
+      - "9092:9092"
+      - "9644:9644"
+    command:
+      - redpanda start
+      - --smp 1
+      - --memory 512M
+      - --overprovisioned
+      - --kafka-addr internal://0.0.0.0:29092,external://0.0.0.0:9092
+      - --advertise-kafka-addr internal://redpanda:29092,external://localhost:9092
+
+  streaming-processor:
+    build: .
+    container_name: iceberg-streaming-processor
+    depends_on:
+      - redpanda
+    environment:
+      - KAFKA_BOOTSTRAP_SERVERS=redpanda:29092
+      - ICEBERG_WAREHOUSE_DIR=/app/data/lakehouse
+    volumes:
+      - lakehouse-data:/app/data/lakehouse
+    ports:
+      - "8000:8000"
+
+volumes:
+  lakehouse-data:
