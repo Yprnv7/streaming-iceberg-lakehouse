@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-11-18T15:27:28.880709+00:00",
+  "hardware": {
+    "os": "Darwin 25.4.0 (arm64)",
+    "python": "3.14.6",
+    "processor": "arm",
+    "cpu_model": "Apple A18 Pro",
+    "ram_gb": 8.0
+  },
+  "throughput": {
+    "total_events_processed": 2446,
+    "late_events_handled": 54,
+    "duration_seconds": 0.161,
+    "events_per_second": 15231.3,
+    "commit_latency_ms": {
+      "p50": 0.54,
+      "p95": 0.85
+    }
+  },
+  "compaction": {
+    "files_before": 25,
+    "files_after": 1,
+    "latency_before_ms": 1.673,
+    "latency_after_ms": 0.499,
+    "latency_reduction_pct": 70.17
+  },
+  "deterministic_replay": {
+    "parity_verified": true,
+    "live_sha256": "ae6aedacad50b37e97248d9575414e46513d26588e3d7b94324aba97dc15fc28",
+    "shadow_sha256": "ae6aedacad50b37e97248d9575414e46513d26588e3d7b94324aba97dc15fc28",
+    "live_row_count": 200,
+    "shadow_row_count": 200,
+    "status": "deterministic_parity_confirmed"
+  }
+}
